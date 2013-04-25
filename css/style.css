@@ -10,6 +10,11 @@
 	position: relative;
 }
 
+#graphContainer img{
+	position: absolute;
+	height: 50px;
+}
+
 #graphContainer img {
 	position: absolute;
 }
