@@ -1,9 +1,13 @@
-function view() {
-	this.collection = new collection();
+function view(callback) {
+	var obj = this;
+	this.collection = new collection(function(){
+		if (callback)
+			callback.call(obj);
+	});
 	this.dom = document.getElementById("graphContainer");
-	this.domheight = this.dom.clientHeight-20;
-	this.domwidth = this.dom.clientWidth-20;
-    this.grid = [];
+	this.domheight = this.dom.clientHeight-40;
+	this.domwidth = this.dom.clientWidth-40;
+    this.grid = []; 
 }
 
 view.prototype.createGrid = function(callback) {
@@ -13,7 +17,7 @@ view.prototype.createGrid = function(callback) {
 	var columnCount = Math.floor(this.domwidth/4/imagewidth)+1;
 	var rowCount = Math.floor(this.domheight/imageheight)+1;
 	this.grid = new Array(4);
-	this.gridCount = [columnCount,rowCount,columnCount,rowCount,columnCount,rowCount]; //[0,1,2,3,4,5][a_col,a_row,b_col,b_row,c_col,c_row]
+	this.gridCount = [columnCount,rowCount,columnCount,rowCount,columnCount,rowCount,columnCount,rowCount]; //[0,1,2,3,4,5][a_col,a_row,b_col,b_row,c_col,c_row]
 	for (var j=0; j<4; j++)
 	{
 		if (this.collection.ratio[j]>columnCount*rowCount)
@@ -31,7 +35,7 @@ view.prototype.createGrid = function(callback) {
 	}	
 	console.log(this.dom);
 	if (callback)
-		callback();
+		callback.call(this);
 }
 
 view.prototype.render = function() {
@@ -59,7 +63,7 @@ view.prototype.render = function() {
 		var xLoc = Math.floor(randX/this.gridCount[gridLoc]*this.domwidth/4+gridLoc*this.domwidth/4);
 		var yLoc = Math.floor(randY/this.gridCount[2*gridLoc+1]*(this.domheight-imageheight-20));
 		this.collection.people[i].dom_id = 'person'+i;
-		var string = '<img id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+(xLoc+Math.floor(Math.random()*20)+10)+'px;"/>'
+		var string = '<img id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+(xLoc+Math.floor(Math.random()*20)+20)+'px;"/>'
 		this.dom.innerHTML += string;
 	}
 }
@@ -92,8 +96,8 @@ view.prototype.move = function(stage) {
 			var yLoc = Math.floor(randY/temp.gridCount[2*gridLoc+1]*(temp.domheight-imageheight-20));
 			//Animating with jQuery
 			$('#person'+i).animate({	
-				top: yLoc,
-				left: xLoc
+				top: yLoc+Math.floor(Math.random()*20)+20,
+				left: xLoc+Math.floor(Math.random()*20)+20
 			},1300);
 		}
 	});

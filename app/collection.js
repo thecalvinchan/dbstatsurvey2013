@@ -1,4 +1,4 @@
-function collection() {
+function collection(callback) {
 	this.people = new Array();
 	var temp = this;
 	//using jQuery to grab JSON
@@ -23,6 +23,8 @@ function collection() {
 			}
 		}
 		temp.ratio = temp.returnRatio(1);
+		if (callback)
+			callback();
 	});
 }
 
