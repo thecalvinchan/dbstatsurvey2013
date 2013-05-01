@@ -15,8 +15,14 @@
 	height: 50px;
 }
 
-#graphContainer img {
+img#loader {
 	position: absolute;
+	width: 32px;
+	height: 32px;
+	left: 50%;
+	top: 50%;
+	margin-left: -16px;
+	margin-top: -16px;
 }
 
 .graphColumn {

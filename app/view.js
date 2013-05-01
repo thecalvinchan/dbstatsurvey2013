@@ -39,6 +39,7 @@ view.prototype.createGrid = function(callback) {
 }
 
 view.prototype.render = function() {
+	this.dom.innerHTML = "";
 	for (var i=0; i<this.collection.people.length; i++)
 	{
 		var number = Math.floor(Math.random()*7)+1;
@@ -63,7 +64,8 @@ view.prototype.render = function() {
 		var xLoc = Math.floor(randX/this.gridCount[gridLoc]*this.domwidth/4+gridLoc*this.domwidth/4);
 		var yLoc = Math.floor(randY/this.gridCount[2*gridLoc+1]*(this.domheight-imageheight-20));
 		this.collection.people[i].dom_id = 'person'+i;
-		var string = '<img id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+(xLoc+Math.floor(Math.random()*20)+20)+'px;"/>'
+		//FIX: classes should not be space delimited
+		var string = '<img class="'+this.collection.people[i].major+'" id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+(xLoc+Math.floor(Math.random()*20)+20)+'px;"/>'
 		this.dom.innerHTML += string;
 	}
 }
