@@ -4,13 +4,14 @@ function view(callback) {
 		if (callback)
 			callback.call(obj);
 	});
+	this.numbers = [document.getElementById("bracket1"),document.getElementById("bracket2"),document.getElementById("bracket3"),document.getElementById("bracket4")];
 	this.dom = document.getElementById("graphContainer");
 	this.domheight = this.dom.clientHeight-40;
 	this.domwidth = this.dom.clientWidth-40;
     this.grid = []; 
 }
 
-view.prototype.createGrid = function(callback) {
+view.prototype.createGrid = function(stage,callback) {
 	//Clears existing grid
 	this.grid = [];
 	//Creates a grid to log people
@@ -20,9 +21,9 @@ view.prototype.createGrid = function(callback) {
 	this.gridCount = [columnCount,rowCount,columnCount,rowCount,columnCount,rowCount,columnCount,rowCount]; //[0,1,2,3,4,5][a_col,a_row,b_col,b_row,c_col,c_row]
 	for (var j=0; j<4; j++)
 	{
-		if (this.collection.ratio[j]>columnCount*rowCount)
+		if (this.collection.returnRatio(stage)[j]>columnCount*rowCount)
 		{
-			var temp = Math.floor(this.collection.ratio[j]/rowCount)+1;
+			var temp = Math.floor(this.collection.returnRatio(stage)[j]/rowCount)+1;
 			this.grid[j] = new Array(temp);
 			this.gridCount[j+j] = temp;
 		}
@@ -35,10 +36,14 @@ view.prototype.createGrid = function(callback) {
 	}	
 	console.log(this.dom);
 	if (callback)
-		callback.call(this);
+		callback.call(this,stage);
 }
 
-view.prototype.render = function() {
+view.prototype.render = function(stage) {
+	for (var i=0; i<this.numbers.length;i++)
+	{
+		this.numbers[i].innerHTML = this.collection.returnRatio(stage)[i] + "<p>students</p>";
+	}
 	this.dom.innerHTML = "";
 	for (var i=0; i<this.collection.people.length; i++)
 	{
@@ -73,11 +78,16 @@ view.prototype.render = function() {
 
 view.prototype.move = function(stage) {
 	var temp = this;
-	this.createGrid(function(){
+	var number = stage+1;
+	for (var i=0; i<this.numbers.length;i++)
+	{
+		this.numbers[i].innerHTML = this.collection.returnRatio(stage)[i] + "<p>students</p>";
+	}
+	this.createGrid(stage,function(){
 		for (var i=0; i<temp.collection.people.length; i++)
 		{
 			var number = Math.floor(Math.random()*7)+1;
-			var gridLoc = temp.collection.people[i].position[stage]-1;
+			var gridLoc = temp.collection.people[i].position[stage-1]-1;
 			var randX = Math.floor(Math.random()*temp.gridCount[gridLoc]);
 			var randY = Math.floor(Math.random()*temp.gridCount[2*gridLoc+1]);
 			do
@@ -94,12 +104,16 @@ view.prototype.move = function(stage) {
 				}
 			}
 			while (temp.grid[gridLoc][randX][randY])
-			var xLoc = Math.floor(randX/temp.gridCount[gridLoc]*temp.domwidth/4+gridLoc*temp.domwidth/4);
+			var xLoc = Math.floor((randX-1)/temp.gridCount[gridLoc]*temp.domwidth/4+gridLoc*temp.domwidth/4);
 			var yLoc = Math.floor(randY/temp.gridCount[2*gridLoc+1]*(temp.domheight-imageheight-20));
+			if (randX > temp.grid[gridLoc].length-2)
+				var tempLeft = xLoc - Math.floor(Math.random()*20)-20;
+			else
+				var tempLeft = xLoc+Math.floor(Math.random()*20)+20;
 			//Animating with jQuery
 			$('#person'+i).animate({	
 				top: yLoc+Math.floor(Math.random()*20)+20,
-				left: xLoc+Math.floor(Math.random()*20)+20
+				left: tempLeft
 			},1300);
 		}
 	});

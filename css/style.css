@@ -1,13 +1,239 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html, body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
 #wrapper {
 	width: 960px;
 	margin: 0 auto 0 auto;
 }
 
+#numbers {
+	height: 215px;
+	width: 960px;
+	padding-left: 50px;
+	background-color: #6ecfdb;
+	background-image: linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -o-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -moz-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -ms-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #d6f2f5),
+		color-stop(0.75, #6ecfdb)
+	);
+}
+
+#numbers td {
+	width: 215px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#numbers td p {
+	font-size: 20px;
+}
+
+
+#leftTransition {
+	width: 0;
+	height: 0;
+	border-top: 0px;
+	border-left: 50px solid transparent;
+	border-top: 50px solid #6ecfdb;
+	float: left;
+}
+
+#rightTransition {
+	width: 0;
+	height: 0;
+	border-top: 0px;
+	border-right: 50px solid transparent;
+	border-top: 50px solid #29afbf;
+	float: right;
+}
+
+#transition {
+	width: 860px;
+	height: 50px;
+	margin-left: 50px;
+	background-color: #29afbf;
+	background-image: linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -o-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -moz-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -ms-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #6ecfdb),
+		color-stop(0.75, #29afbf)
+	);
+}
+
+#axis {
+	width: 860px;
+	height: 50px;
+	margin-left: 50px;
+	background-color: #6ecfdb;
+	background-image: linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -o-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -moz-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -ms-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #d6f2f5),
+		color-stop(0.75, #6ecfdb)
+	);
+}
+
+#axis li {
+	float: left;
+	width: 214px;
+	text-align: center;
+	line-height: 50px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#axis li:last-child {
+	border-right: none;
+	width: 215px;
+}
+
+#axisBottom {
+	width: 860px;
+	margin-left: 50px;
+	height: 1px;
+	background-color: #29afbf;
+	background-image: linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -o-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -moz-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -ms-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #6ecfdb),
+		color-stop(0.75, #29afbf)
+	);
+	box-shadow: 5px 5px 5px #888;
+}
+
+#leftContainer {
+	width: 0;
+	height: 0;
+	border-top: 0px;
+	border-left: 50px solid transparent;
+	border-bottom: 300px solid #d6f2f5;
+	float: left;
+}
+
+#rightContainer {
+	width: 0;
+	height: 0;
+	border-top: 0px;
+	border-right: 50px solid transparent;
+	border-bottom: 300px solid #6ecfdb;
+	float: right;
+}
+
 #graphContainer {
 	height: 300px;
-	width: 960px;
-	background-color: #97d988;
+	width: 860px;
 	position: relative;
+	margin-left: 50px;
+	background-color: #6ecfdb;
+	background-image: linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -o-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -moz-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -ms-linear-gradient(left , #d6f2f5 0%, #6ecfdb 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #d6f2f5),
+		color-stop(0.75, #6ecfdb)
+	);
+}
+
+#bottomContainer {
+	width: 960px;
+	height: 10px;
+	background-color: #29afbf;
+	background-image: linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -o-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -moz-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -ms-linear-gradient(left , #6ecfdb 0%, #29afbf 75%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		right bottom,
+		color-stop(0, #6ecfdb),
+		color-stop(0.75, #29afbf)
+	);
 }
 
 #graphContainer img{

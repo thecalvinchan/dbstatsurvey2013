@@ -7,19 +7,35 @@ function collection(callback) {
 		{
 			for (var i=0; i<data[x].bracket1; i++)
 			{
-				temp.people.push({"dom_id":"","position":[1,0,0,0],"major":data[x].Major});
+				var pos = [];
+				pos[0]=1;
+				pos[1]=parseInt(data[x]["1year"]);
+				pos[2]=parseInt(data[x]["10years"]);
+				temp.people.push({"dom_id":"","position":pos,"major":data[x].Major});
 			}
 			for (var i=0; i<data[x].bracket4; i++)
 			{
-				temp.people.push({"dom_id":"","position":[4,0,0,0],"major":data[x].Major});
+				var pos = [];
+				pos[0]=4;
+				pos[1]=parseInt(data[x]["1year"]);
+				pos[2]=parseInt(data[x]["10years"]);
+				temp.people.push({"dom_id":"","position":pos,"major":data[x].Major});
 			}
 			for (var i=0; i<data[x].bracket2; i++)
 			{
-				temp.people.push({"dom_id":"","position":[2,0,0,0],"major":data[x].Major});
+				var pos = [];
+				pos[0]=2;
+				pos[1]=parseInt(data[x]["1year"]);
+				pos[2]=parseInt(data[x]["10years"]);
+				temp.people.push({"dom_id":"","position":pos,"major":data[x].Major});
 			}
 			for (var i=0; i<data[x].bracket3; i++)
 			{
-				temp.people.push({"dom_id":"","position":[3,0,0,0],"major":data[x].Major});
+				var pos = [];
+				pos[0]=3;
+				pos[1]=parseInt(data[x]["1year"]);
+				pos[2]=parseInt(data[x]["10years"]);
+				temp.people.push({"dom_id":"","position":pos,"major":data[x].Major});
 			}
 		}
 		temp.ratio = temp.returnRatio(1);

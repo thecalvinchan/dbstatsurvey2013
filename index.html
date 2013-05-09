@@ -6,9 +6,33 @@
 </head>
 <body>
 	<div id="wrapper">
+		<table id="numbers">
+			<tr>
+				<td id="bracket1"><p>$0 - $40,000</p></td>
+				<td id="bracket2"><p>$40,000 - $60,000</p></td>
+				<td id="bracket3"><p>$60,000 - $80,000</p></td>
+				<td id="bracket4"><p>$80,000 +</p></td>
+			</tr>
+		</table>
+		<div id="leftTransition"></div><div id="rightTransition"></div>
+		<div id="transition"></div>
+		<div id="axis">
+			<ul>
+				<li>$0 - $40,000</li>
+				<li>$40,000 - $60,000</li>
+				<li>$60,000 - $80,000</li>
+				<li>$80,000 +</li>
+			</ul>
+		</div>
+		<div id="axisBottom"></div>
+		<div id="leftContainer"></div><div id="rightContainer"></div>
 		<div id="graphContainer">
 			<img id="loader" src="assets/ajax-loader.gif"/>
 		</div>
+		<div id="bottomContainer"></div>
+		<a href="#" id="move1">Expected</a>
+		<a href="#" id="move2">Recent Grads</a>
+		<a href="#" id="move3">10 years later</a>
 	</div>
 	<script type="text/javascript" src="scripts/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="app/globals.js"></script>
