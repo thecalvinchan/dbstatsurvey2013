@@ -68,9 +68,13 @@ view.prototype.render = function(stage) {
 		while (this.grid[gridLoc][randX][randY])
 		var xLoc = Math.floor(randX/this.gridCount[gridLoc]*this.domwidth/4+gridLoc*this.domwidth/4);
 		var yLoc = Math.floor(randY/this.gridCount[2*gridLoc+1]*(this.domheight-imageheight-20));
+		if (randX >= this.grid[gridLoc].length-1)
+			var tempLeft = xLoc-Math.floor(Math.random()*20);
+		else
+			var tempLeft = xLoc+Math.floor(Math.random()*20);
 		this.collection.people[i].dom_id = 'person'+i;
 		//FIX: classes should not be space delimited
-		var string = '<img class="'+this.collection.people[i].major+'" id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+(xLoc+Math.floor(Math.random()*20)+20)+'px;"/>'
+		var string = '<img class="'+this.collection.people[i].major+'" id="person'+i+'" src="assets/silhouettes/males/'+number+'.png" grid="'+gridLoc+'" style="top:'+(yLoc+Math.floor(Math.random()*20)+20)+'px; left:'+tempLeft+'px;"/>'
 		this.dom.innerHTML += string;
 	}
 }
@@ -88,7 +92,7 @@ view.prototype.move = function(stage) {
 		{
 			var number = Math.floor(Math.random()*7)+1;
 			var gridLoc = temp.collection.people[i].position[stage-1]-1;
-			var randX = Math.floor(Math.random()*temp.gridCount[gridLoc]);
+			var randX = Math.floor(Math.random()*temp.gridCount[2*gridLoc]);
 			var randY = Math.floor(Math.random()*temp.gridCount[2*gridLoc+1]);
 			do
 			{
@@ -104,12 +108,12 @@ view.prototype.move = function(stage) {
 				}
 			}
 			while (temp.grid[gridLoc][randX][randY])
-			var xLoc = Math.floor((randX-1)/temp.gridCount[gridLoc]*temp.domwidth/4+gridLoc*temp.domwidth/4);
+			var xLoc = Math.floor(((randX)/temp.gridCount[2*gridLoc]+gridLoc)*temp.domwidth/4);
 			var yLoc = Math.floor(randY/temp.gridCount[2*gridLoc+1]*(temp.domheight-imageheight-20));
-			if (randX > temp.grid[gridLoc].length-2)
-				var tempLeft = xLoc - Math.floor(Math.random()*20)-20;
+			if (randX >= temp.grid[gridLoc].length-1)
+				var tempLeft = xLoc-Math.floor(Math.random()*20);
 			else
-				var tempLeft = xLoc+Math.floor(Math.random()*20)+20;
+				var tempLeft = xLoc+Math.floor(Math.random()*20);
 			//Animating with jQuery
 			$('#person'+i).animate({	
 				top: yLoc+Math.floor(Math.random()*20)+20,
